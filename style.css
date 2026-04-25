@@ -3,7 +3,7 @@
    Темний editorial стиль, оранжево-червоний акцент, Syne + DM Sans
 ================================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Climate+Crisis:YEAR@1979&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 /* ── VARIABLES ─────────────────────────────────────────────── */
 :root {
@@ -20,8 +20,8 @@
   --off-white: #e8e6e1;
   --muted:     #888888;
   --muted-2:   #555555;
-  --font-head: 'Syne', sans-serif;
-  --font-body: 'DM Sans', sans-serif;
+  --font-head: 'Climate+Crisis', sans-serif;
+  --font-body: 'Inter', sans-serif;
   --radius-sm: 8px;
   --radius-md: 14px;
   --radius-lg: 22px;
