@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="style.css">
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Квитки — Актовий Зал</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a class="nav__logo" href="#">
+        <span class="nav__logo-dot"></span>
+        Актовий Зал
+      </a>
+      <div class="nav__links">
+        <a href="#events">Події</a>
+        <a href="#about">Про нас</a>
+      </div>
+      <button class="btn-pill btn-pill--outline" id="openCreateBtn">
+        + Додати подію
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="hero__bg">
+      <div class="hero__gradient"></div>
+      <div class="hero__grid-lines"></div>
+    </div>
+    <div class="hero__content">
+      <div class="hero__label">
+        <span class="dot dot--orange"></span>
+        Офіційна платформа
+      </div>
+      <h1 class="hero__title">
+        Квитки на<br/>
+        <em>незабутні</em><br/>
+        події
+      </h1>
+      <p class="hero__sub">
+        Бронюйте місця на концерти, лекції та вистави<br/>
+        в найкращому актовому залі міста.
+      </p>
+      <div class="hero__actions">
+        <button class="btn-pill btn-pill--orange" id="heroExploreBtn">
+          Переглянути події
+        </button>
+        <button class="btn-pill btn-pill--ghost" id="heroAddBtn">
+          Організатору →
+        </button>
+      </div>
+    </div>
+    <div class="hero__visual">
+      <div class="hero__card-stack">
+        <div class="hero__card hero__card--1">
+          <div class="hero__card-icon">🎭</div>
+          <div class="hero__card-text">Театр</div>
+        </div>
+        <div class="hero__card hero__card--2">
+          <div class="hero__card-icon">🎵</div>
+          <div class="hero__card-text">Концерт</div>
+        </div>
+        <div class="hero__card hero__card--3">
+          <div class="hero__card-icon">🎤</div>
+          <div class="hero__card-text">Лекція</div>
+        </div>
+        <div class="hero__orb hero__orb--1"></div>
+        <div class="hero__orb hero__orb--2"></div>
+      </div>
+    </div>
+    <div class="hero__scroll-hint">
+      <div class="scroll-line"></div>
+      <span>Скролити</span>
+    </div>
+  </section>
+
+  <!-- ── STATS BAR ── -->
+  <div class="stats-bar">
+    <div class="stats-bar__inner">
+      <div class="stat">
+        <span class="stat__num" id="statEvents">0</span>
+        <span class="stat__label">Активних подій</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat__num" id="statTickets">0</span>
+        <span class="stat__label">Продано квитків</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat__num" id="statSeats">0</span>
+        <span class="stat__label">Вільних місць</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── EVENTS SECTION ── -->
+  <section class="events-section" id="events">
+    <div class="section-wrapper">
+      <div class="section-head">
+        <div class="section-label">
+          <span class="dot dot--orange"></span>
+          Розклад
+        </div>
+        <h2 class="section-title">Найближчі події</h2>
+        <button class="btn-pill btn-pill--orange btn-pill--sm" id="addEventBtn2">
+          + Нова подія
+        </button>
+      </div>
+      <div class="events-grid" id="eventsList">
+        <!-- rendered by JS -->
+      </div>
+      <div class="empty-state hidden" id="emptyState">
+        <div class="empty-state__icon">🎭</div>
+        <h3>Подій ще немає</h3>
+        <p>Додайте першу подію, щоб почати продаж квитків</p>
+        <button class="btn-pill btn-pill--orange" id="emptyAddBtn">Додати подію</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ABOUT ── -->
+  <section class="about-section" id="about">
+    <div class="section-wrapper about-grid">
+      <div class="about-text">
+        <div class="section-label">
+          <span class="dot dot--orange"></span>
+          Про платформу
+        </div>
+        <h2 class="section-title">Зручно.<br/>Швидко.<br/>Надійно.</h2>
+      </div>
+      <div class="about-cards">
+        <div class="about-card">
+          <div class="about-card__icon">⚡</div>
+          <h4>Миттєве бронювання</h4>
+          <p>Квиток — за кілька секунд. Без черг і зайвих кроків.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-card__icon">🔒</div>
+          <h4>Захист від дублів</h4>
+          <p>Унікальний email та телефон для кожного квитка на подію.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-card__icon">🕐</div>
+          <h4>Гнучке управління</h4>
+          <p>Редагуйте або скасовуйте події за 24 години до початку.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TOAST ── -->
+  <div id="toast" class="toast"></div>
+
+  <!-- ================================================================
+       MODAL: CREATE / EDIT EVENT
+  ================================================================ -->
+  <div id="eventModal" class="modal" aria-hidden="true">
+    <div class="modal__backdrop" data-close="eventModal"></div>
+    <div class="modal__panel">
+      <div class="modal__header">
+        <h3 id="eventModalTitle">Нова подія</h3>
+        <button class="modal__close" data-close="eventModal">✕</button>
+      </div>
+      <form id="eventForm" class="modal__form" novalidate>
+        <input type="hidden" id="eventId" />
+        <div class="field">
+          <label for="eventName">Назва події</label>
+          <input type="text" id="eventName" placeholder="Великий концерт оркестру" required />
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="eventDate">Дата та час</label>
+            <input type="datetime-local" id="eventDate" required />
+          </div>
+          <div class="field">
+            <label for="eventDuration">Тривалість (хв)</label>
+            <input type="number" id="eventDuration" min="1" max="999" placeholder="90" required />
+          </div>
+        </div>
+        <div class="field">
+          <label for="eventSeats">Кількість місць</label>
+          <input type="number" id="eventSeats" min="1" max="9999" placeholder="200" required />
+        </div>
+        <div class="field">
+          <label for="eventDesc">Опис</label>
+          <textarea id="eventDesc" rows="3" placeholder="Короткий опис події..."></textarea>
+        </div>
+        <div id="eventFormError" class="field-error hidden"></div>
+        <div class="modal__actions">
+          <button type="button" class="btn-pill btn-pill--ghost" data-close="eventModal">Скасувати</button>
+          <button type="submit" class="btn-pill btn-pill--orange">Зберегти</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================================================================
+       MODAL: BUY TICKET
+  ================================================================ -->
+  <div id="ticketModal" class="modal" aria-hidden="true">
+    <div class="modal__backdrop" data-close="ticketModal"></div>
+    <div class="modal__panel">
+      <div class="modal__header">
+        <h3>Купити квиток</h3>
+        <button class="modal__close" data-close="ticketModal">✕</button>
+      </div>
+      <div class="ticket-event-info" id="ticketEventInfo"></div>
+      <form id="ticketForm" class="modal__form" novalidate>
+        <input type="hidden" id="ticketEventId" />
+        <div class="field">
+          <label for="ticketName">Ім'я</label>
+          <input type="text" id="ticketName" placeholder="Іван Іваненко" required />
+        </div>
+        <div class="field">
+          <label for="ticketEmail">Email</label>
+          <input type="email" id="ticketEmail" placeholder="ivan@example.com" required />
+        </div>
+        <div class="field">
+          <label for="ticketPhone">Номер телефону</label>
+          <input type="tel" id="ticketPhone" placeholder="+380501234567" required />
+        </div>
+        <div id="ticketFormError" class="field-error hidden"></div>
+        <div class="modal__actions">
+          <button type="button" class="btn-pill btn-pill--ghost" data-close="ticketModal">Скасувати</button>
+          <button type="submit" class="btn-pill btn-pill--orange">Підтвердити</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================================================================
+       MODAL: VIEW TICKETS
+  ================================================================ -->
+  <div id="viewTicketsModal" class="modal" aria-hidden="true">
+    <div class="modal__backdrop" data-close="viewTicketsModal"></div>
+    <div class="modal__panel modal__panel--wide">
+      <div class="modal__header">
+        <h3 id="viewTicketsTitle">Квитки</h3>
+        <button class="modal__close" data-close="viewTicketsModal">✕</button>
+      </div>
+      <div id="ticketsList" class="tickets-list"></div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
