@@ -1,42 +1,29 @@
-/**
- * ================================================================
- * app.js — Система продажу квитків
- * Vanilla JS · localStorage · No frameworks
- * ================================================================
- */
-
-// ── CONSTANTS ────────────────────────────────────────────────
 const STORAGE_KEY = 'hallTicketingApp_v2';
 
-// ── DATA LAYER ───────────────────────────────────────────────
-
-/** Отримати всі події з localStorage */
+//для отримання всіх подій
 function getEvents() {
   try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
   catch { return []; }
 }
 
-/** Зберегти масив подій */
 function saveEvents(events) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(events));
 }
 
-/** Знайти подію за ID */
 function findEvent(id) {
   return getEvents().find(e => e.id === id) || null;
 }
 
-/** Унікальний ID */
+//робить так щоб був унікальний ID
 function uid() {
   return `${Date.now()}-${Math.random().toString(36).slice(2, 7)}`;
 }
 
-// ── TIME VALIDATION ──────────────────────────────────────────
+//Валідація часу
 
 /**
  * Перевірка правила 24 годин.
  * Редагування/видалення можливе лише якщо до події >= 24 год.
- * @param {string} dateStr — ISO рядок дати події
  * @returns {boolean}
  */
 function canEditEvent(dateStr) {
@@ -46,27 +33,17 @@ function canEditEvent(dateStr) {
 
 // ── SEATS HELPERS ────────────────────────────────────────────
 
-/** Кількість вільних місць */
+/кількість вільних місць
 function freeSeats(event) {
   return event.seats - (event.tickets?.length || 0);
 }
 
-/** Відсоток заповненості */
+/скільки відсотків заповнено
 function occupancyPct(event) {
   return Math.min(100, Math.round((event.tickets?.length || 0) / event.seats * 100));
 }
 
-// ── TICKET UNIQUENESS ────────────────────────────────────────
-
-/**
- * Перевіряє унікальність email і телефону в межах однієї події.
- * Одна людина не може мати два квитки з однаковим email АБО телефоном.
- *
- * @param {Object} event
- * @param {string} email
- * @param {string} phone
- * @returns {{ ok: boolean, message?: string }}
- */
+//унікальність квитків
 function checkUniqueness(event, email, phone) {
   const tickets = event.tickets || [];
   const normEmail = email.trim().toLowerCase();
@@ -81,8 +58,7 @@ function checkUniqueness(event, email, phone) {
   return { ok: true };
 }
 
-// ── FORMAT HELPERS ───────────────────────────────────────────
-
+//дата час
 function formatDate(str) {
   return new Date(str).toLocaleString('uk-UA', {
     day: 'numeric', month: 'short', year: 'numeric',
@@ -98,8 +74,7 @@ function esc(str) {
     .replace(/'/g, '&#039;');
 }
 
-// ── RENDER EVENTS ────────────────────────────────────────────
-
+//рендер подій
 function renderEvents() {
   const events = getEvents().sort((a, b) => new Date(a.date) - new Date(b.date));
   const list = document.getElementById('eventsList');
@@ -125,7 +100,6 @@ function buildCard(ev) {
   const isFew  = !isSold && free <= 10;
   const canEdit = canEditEvent(ev.date);
 
-  // Classes for color coding
   const thumbClass = isSold ? 'sold' : isFew ? 'few' : '';
   const countClass = isSold ? 'sold' : isFew ? 'few' : '';
   const barClass   = isSold ? 'sold' : isFew ? 'few' : '';
